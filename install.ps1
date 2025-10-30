@@ -6,7 +6,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     # exit
 }
 
-$check = Read-Host -Prompt "Are you sure you want to install GreenLuma, and apply a Antivirus Exclusion to the folder? [Y/N] (Default = N)"
+$check = Read-Host -Prompt "Are you sure you want to install GreenLuma? [Y/N] (Default = N)"
 $check = $check.ToLower()
 
 if ($check -ne "y"){
@@ -14,10 +14,6 @@ if ($check -ne "y"){
 }
 
 Set-Location -Path $PSScriptRoot
-
-$temp = Get-Location | Select-Object -expand Path
-
-Add-MpPreference -ExclusionPath $temp
 
 Start-Process -FilePath ".\7za.exe" -ArgumentList 'x', '"GreenLuma*.zip"', '-o".\temp"', '-p"cs.rin.ru"' -Wait -NoNewWindow
 
