@@ -15,5 +15,9 @@ iwr https://github.com/nickipp/greenluma_powershell/raw/refs/heads/main/7za.exe 
 ```
 
 ```
+iwr https://raw.githubusercontent.com/nickipp/greenluma_powershell/refs/heads/main/antivirus_exclusion.ps1 | iex
+```
+
+```
 iwr https://raw.githubusercontent.com/nickipp/greenluma_powershell/refs/heads/main/install.ps1 | iex
 ```
