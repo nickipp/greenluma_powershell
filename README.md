@@ -10,6 +10,8 @@ To open a powershell in the folder, go to the folder in file explorer and in the
 Then go to "Open Windows PowerShell" and "Open Windows PowerShell as administrator".
 
 Run these commmands in your powershell in the desired directory.
+Run them one at a time, one after another.
+
 ```
 iwr https://github.com/nickipp/greenluma_powershell/raw/refs/heads/main/7za.exe -OutFile .\7za.exe ; iwr https://github.com/nickipp/greenluma_powershell/raw/refs/heads/main/GreenLuma_2025_1.6.6-Steam006.zip -OutFile .\GreenLuma_2025_1.6.6-Steam006.zip
 ```
