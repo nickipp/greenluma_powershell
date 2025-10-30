@@ -6,8 +6,12 @@ greenluma powershell script
 Open a powershell in the directory where you want to install Greenluma.
 Make sure it is run as administrator.
 
+# Windows 10 Users
 To open a powershell in the folder, go to the folder in file explorer and in the top left there will be "File" button.
 Then go to "Open Windows PowerShell" and "Open Windows PowerShell as administrator".
+
+# Windows 11 Users
+
 
 Run these commmands in your powershell in the desired directory.
 Run them one at a time, one after another.
