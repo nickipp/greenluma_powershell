@@ -1,8 +1,32 @@
+# user input check to make sure before running
 $check = Read-Host -Prompt "Are you sure you want to install GreenLuma? [Y/N] (Default = N)"
 $check = $check.ToLower()
 
 if ($check -ne "y"){
     exit
+}
+
+# catches exceptions and cancels the script from continuing
+try {
+    $KeyPath = "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam"
+    $ValueName = "InstallPath"
+    # Attempt to get the item property
+    $property = Get-ItemProperty -Path $KeyPath -Name $ValueName -ErrorAction Stop
+    $steam_path = $($property.$ValueName)
+
+    # If successful, the property exists and its value is in $property.$ValueName
+    # Write-Host "The property '$ValueName' exists. Value: $($property.$ValueName)"
+}
+catch [System.Management.Automation.ItemNotFoundException] {
+    # If ItemNotFoundException is caught, the property does not exist
+    # Write-Host "The property '$ValueName' does not exist at '$KeyPath'."
+    Write-Host "Steam is not installed."
+    return
+}
+catch {
+    # Catch any other unexpected errors
+    Write-Host "An error occurred: $($_.Exception.Message)"
+    return
 }
 
 Set-Location -Path $PSScriptRoot
@@ -21,7 +45,7 @@ Remove-Item -Recurse ".\temp"
 $path = ".\greenluma\DLLInjector.ini"
 $file = (Get-Content "$path")
 
-$steam_path = Get-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam" | Select-Object -expand InstallPath
+# $steam_path = Get-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam" | Select-Object -expand InstallPath
 $steam_exe = "`"$steam_path\steam.exe`""
 
 $current_dir = Get-Location | Select-Object -expand Path
