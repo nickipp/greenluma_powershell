@@ -15,4 +15,4 @@ Set-Location -Path $PSScriptRoot
 
 $temp = Get-Location | Select-Object -expand Path
 
-Add-MpPreference -ExclusionPath $temp
+Remove-MpPreference -ExclusionPath $temp
