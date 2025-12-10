@@ -49,10 +49,10 @@ Set-Location -Path $install_location
 # downloads required files 7zip and password protected zip with greenluma
 # hardcoded so need to manually updated everytime lol
 Invoke-WebRequest https://gluma.weeniehut.duckdns.org/7za.exe -OutFile .\7za.exe
-Invoke-WebRequest https://gluma.weeniehut.duckdns.org/GreenLuma_2025_1.6.9-Steam006.zip -OutFile .\GreenLuma_2025_1.6.6-Steam006.zip
+Invoke-WebRequest https://gluma.weeniehut.duckdns.org/GreenLuma_2025_1.6.9-Steam006.zip -OutFile .\gluma.zip
 
 # uses 7zip to extract files to a temp directory
-Start-Process -FilePath ".\7za.exe" -ArgumentList 'x', '"GreenLuma*.zip"', '-o".\temp"', '-p"cs.rin.ru"' -Wait -NoNewWindow
+Start-Process -FilePath ".\7za.exe" -ArgumentList 'x', '"gluma.zip"', '-o".\temp"', '-p"cs.rin.ru"' -Wait -NoNewWindow
 
 Move-Item -Path ".\temp\NormalMode\DLLInjector.exe" -Destination ".\"
 Move-Item -Path ".\temp\NormalMode\DLLInjector.ini" -Destination ".\"
@@ -61,6 +61,8 @@ Move-Item -Path ".\temp\StealthMode\DeleteSteamAppCache.exe" -Destination ".\"
 Move-Item -Path ".\temp\NormalMode\GreenLuma_2025_x86.dll" -Destination ".\gluma.dll"
 
 Remove-Item -Recurse ".\temp"
+Remove-Item ".\7za.exe"
+Remove-Item ".\gluma.zip"
 
 $path = ".\DLLInjector.ini"
 $file = (Get-Content "$path")
