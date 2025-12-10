@@ -80,10 +80,10 @@ $file = $file.Replace("EnableFakeParentProcess = 0","EnableFakeParentProcess = 1
 $file = $file.Replace("CreateFiles = 0","CreateFiles = 1")
 $file = $file.Replace("FileToCreate_1 =","FileToCreate_1 = StealthMode.bin")
 
-$file = $file.Repalce("BootImage = GreenLuma2025_Files\BootImage.bmp","BootImage =")
-$file = $file.Repalce("BootImageWidth = 500","BootImageWidth =")
-$file = $file.Repalce("BootImageHeight = 500","BootImageHeight =")
-$file = $file.Repalce("BootImageXOffest = 240","BootImageXOffest =")
-$file = $file.Repalce("BootImageYOffest = 280","BootImageYOffest =")
+$file = $file.Replace("BootImage = GreenLuma2025_Files\BootImage.bmp","BootImage =")
+$file = $file.Replace("BootImageWidth = 500","BootImageWidth =")
+$file = $file.Replace("BootImageHeight = 500","BootImageHeight =")
+$file = $file.Replace("BootImageXOffest = 240","BootImageXOffest =")
+$file = $file.Replace("BootImageYOffest = 280","BootImageYOffest =")
 
 Set-Content -Path $path -Value $file
