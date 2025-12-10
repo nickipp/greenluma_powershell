@@ -3,7 +3,7 @@ $local_appdata_location = $env:LOCALAPPDATA
 $install_location = $local_appdata_location + "\Programs\GreenLuma"
 
 # Check if the folder exists and tell user to run other script first if it does not exist
-if (-Not (Test-Path -Path $folderPath)) {
+if (-Not (Test-Path -Path $install_location)) {
     Write-Host "Run antivirus_exclusion script before running this script"
     return
 }
