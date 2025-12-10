@@ -16,7 +16,3 @@ Set-Location -Path $PSScriptRoot
 $temp = Get-Location | Select-Object -expand Path
 
 Remove-MpPreference -ExclusionPath $temp
-
-# creates app list folder and one file
-New-Item -Path "$install_location\AppList" -ItemType Directory
-New-Item -Path "$install_location\AppList\0.txt" -ItemType File
