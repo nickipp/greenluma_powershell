@@ -87,7 +87,3 @@ $file = $file.Replace("BootImageXOffest = 240","BootImageXOffest =")
 $file = $file.Replace("BootImageYOffest = 280","BootImageYOffest =")
 
 Set-Content -Path $path -Value $file
-
-# creates app list folder and one file
-New-Item -Path "$install_location\AppList" -ItemType Directory
-New-Item -Path "$install_location\AppList\0.txt" -ItemType File
