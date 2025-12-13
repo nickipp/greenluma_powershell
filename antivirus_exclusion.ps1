@@ -8,7 +8,8 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 $install_location = "$env:LOCALAPPDATA\Programs\GreenLuma"
 
 # user input check before running
-$check = Read-Host -Prompt "Are you sure you want to apply an antivirus exlusion to $install_location? [Y/N] (Default = N)"
+Write-Host "Install Location: $install_location"
+$check = Read-Host -Prompt "Are you sure you want to apply an antivirus exlusion to the folder above? [Y/N] (Default = N)"
 $check = $check.ToLower()
 
 if ($check -ne "y"){
