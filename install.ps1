@@ -48,8 +48,8 @@ Set-Location -Path $install_location
 # downloads required files 7zip and password protected zip with greenluma
 # hardcoded so need to manually updated everytime lol
 try {
-    Invoke-WebRequest https://gluma.weeniehut.duckdns.org/7za.exe -OutFile .\7za.exe
-    Invoke-WebRequest https://gluma.weeniehut.duckdns.org/GreenLuma_2025_1.6.9-Steam006.zip -OutFile .\gluma.zip
+    Invoke-WebRequest -Uri https://gluma.weeniehut.duckdns.org/7za.exe -UseBasicParsing -OutFile .\7za.exe
+    Invoke-WebRequest -Uri https://gluma.weeniehut.duckdns.org/GreenLuma_2025_1.6.9-Steam006.zip -UseBasicParsing -OutFile .\gluma.zip
 }
 catch {
     Write-Host "An error occurred: $($_.Exception.Message)"
