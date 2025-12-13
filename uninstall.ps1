@@ -11,8 +11,4 @@ if ($check -ne "y"){
     exit
 }
 
-Set-Location -Path $PSScriptRoot
-
-$temp = Get-Location | Select-Object -expand Path
-
 Remove-MpPreference -ExclusionPath $temp
