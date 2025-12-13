@@ -1,6 +1,5 @@
 # sets where the default install location is
-$local_appdata_location = $env:LOCALAPPDATA
-$install_location = $local_appdata_location + "\Programs\GreenLuma"
+$install_location = "$env:LOCALAPPDATA\Programs\GreenLuma"
 
 # Check if the folder exists and tell user to run other script first if it does not exist
 if (-Not (Test-Path -Path $install_location)) {
@@ -48,8 +47,14 @@ Set-Location -Path $install_location
 
 # downloads required files 7zip and password protected zip with greenluma
 # hardcoded so need to manually updated everytime lol
-Invoke-WebRequest https://gluma.weeniehut.duckdns.org/7za.exe -OutFile .\7za.exe
-Invoke-WebRequest https://gluma.weeniehut.duckdns.org/GreenLuma_2025_1.6.9-Steam006.zip -OutFile .\gluma.zip
+try {
+    Invoke-WebRequest https://gluma.weeniehut.duckdns.org/7za.exe -OutFile .\7za.exe
+    Invoke-WebRequest https://gluma.weeniehut.duckdns.org/GreenLuma_2025_1.6.9-Steam006.zip -OutFile .\gluma.zip
+}
+catch {
+    Write-Host "An error occurred: $($_.Exception.Message)"
+    return
+}
 
 # uses 7zip to extract files to a temp directory
 Start-Process -FilePath ".\7za.exe" -ArgumentList 'x', '"gluma.zip"', '-o".\temp"', '-p"cs.rin.ru"' -Wait -NoNewWindow
